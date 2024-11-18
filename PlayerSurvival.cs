@@ -81,4 +81,19 @@ public class PlayerSurvival : MonoBehaviour
         Debug.Log("Level Complete!");
         // Implement level-complete logic (e.g., display Level Complete UI)
     }
+
+    // Detect collision with collectibles
+    void OnTriggerEnter(Collider other)
+    {
+        // Check if the player collided with a collectible
+        if (other.CompareTag("Collectible"))
+        {
+            // Call the method to collect the item
+            CollectItem();
+
+            // Destroy the collectible after it is collected
+            Destroy(other.gameObject);
+        }
+    }
 }
+
